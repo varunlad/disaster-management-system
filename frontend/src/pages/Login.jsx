@@ -6,13 +6,24 @@ import API from '../utils/api';
 const Login = () => {
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false); // Optimization
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+
+    // REAL-TIME VALIDATION CHECKS
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isEmailValid = emailRegex.test(email);
+    const isPasswordValid = password.length > 0;
+    
+    // Button is disabled until true
+    const isFormValid = isEmailValid && isPasswordValid;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!isFormValid) return;
+        
         setIsLoading(true);
         const toastId = toast.loading("Verifying credentials...");
+        
         try {
             const { data } = await API.post('/auth/login', { email, password });
             localStorage.setItem('userInfo', JSON.stringify(data.data));
@@ -37,13 +48,16 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label className="form-label fw-bold text-secondary">Email Address</label>
-                            <input type="email" className="form-control form-control-lg bg-light" placeholder="name@example.com" required onChange={e => setEmail(e.target.value)} disabled={isLoading} />
+                            <input type="email" className={`form-control form-control-lg bg-light ${email && !isEmailValid ? 'is-invalid' : ''}`} placeholder="name@example.com" required onChange={e => setEmail(e.target.value)} disabled={isLoading} />
+                            {email && !isEmailValid && <div className="invalid-feedback fw-bold">Please enter a valid email format.</div>}
                         </div>
+                        
                         <div className="mb-4">
                             <label className="form-label fw-bold text-secondary">Password</label>
                             <input type="password" className="form-control form-control-lg bg-light" placeholder="••••••••" required onChange={e => setPassword(e.target.value)} disabled={isLoading} />
                         </div>
-                        <button type="submit" className="btn btn-gradient btn-lg w-100 rounded-pill shadow-sm" disabled={isLoading}>
+                        
+                        <button type="submit" className="btn btn-gradient btn-lg w-100 rounded-pill shadow-sm" disabled={isLoading || !isFormValid}>
                             {isLoading ? <span className="spinner-border spinner-border-sm me-2"></span> : 'Secure Login'}
                         </button>
                     </form>

@@ -1,10 +1,5 @@
 html, body { height: 100%; margin: 0; }
-body { 
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
-    background-attachment: fixed; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-}
-
+body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); background-attachment: fixed; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 #root { display: flex; flex-direction: column; min-height: 100vh; }
 .main-content { flex: 1 0 auto; width: 100%; padding-bottom: 2rem; }
 footer { flex-shrink: 0; }
@@ -24,4 +19,20 @@ footer { flex-shrink: 0; }
 .form-select, .form-control { background-clip: padding-box !important; border: 1px solid #ced4da !important; margin-bottom: 2px; }
 .info-icon { display: inline-block; margin-left: 6px; color: #0d6efd; cursor: help; font-size: 0.9em; font-weight: bold; background: #e9ecef; border-radius: 50%; width: 18px; height: 18px; text-align: center; line-height: 18px; }
 
-@media (max-width: 768px) { .card-custom { padding: 1rem !important; } .custom-modal-content { padding: 15px !important; } }
+/* MOBILE RESPONSIVENESS */
+.nav-tabs-scrollable {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid #dee2e6;
+}
+.nav-tabs-scrollable::-webkit-scrollbar { display: none; }
+
+@media (max-width: 768px) { 
+    .card-custom { padding: 1rem !important; } 
+    .custom-modal-content { padding: 15px !important; }
+    .action-btns { display: flex; flex-direction: column; gap: 5px; }
+    .action-btns button { width: 100%; margin: 0 !important; }
+}

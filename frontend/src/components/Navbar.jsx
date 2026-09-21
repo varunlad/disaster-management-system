@@ -16,19 +16,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark navbar-custom px-3 py-3">
             <Link className="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" to="/">
-                {/* Visual Emergency Shield Logo */}
-                <span style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '8px',
-                    background: 'transparent',
-                  
-                }}>
-                    🛡️
-                </span>
+                <span className="fs-3">🛡️</span>
                 <span>Disaster Management</span>
             </Link>
             

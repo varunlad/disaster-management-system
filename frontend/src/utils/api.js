@@ -1,5 +1,11 @@
 import axios from 'axios';
-const API = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api' });
+
+// In production (Render), it uses VITE_API_URL. In local development, it defaults to localhost.
+const API = axios.create({
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+});
+
+// Automatically attach the token to every request if the user is logged in
 API.interceptors.request.use((req) => {
     const userInfo = localStorage.getItem('userInfo');
     if (userInfo) {
@@ -8,4 +14,5 @@ API.interceptors.request.use((req) => {
     }
     return req;
 });
+
 export default API;

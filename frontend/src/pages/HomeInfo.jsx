@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeInfo = () => {
-    // Check if user is logged in
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    // SAFE PARSE
+    const storedUser = localStorage.getItem('userInfo');
+    const userInfo = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
 
     return (
         <div className="container mt-2">
@@ -15,7 +16,6 @@ const HomeInfo = () => {
                 <div className="mt-4 d-flex justify-content-center gap-3 flex-wrap">
                     <Link to="/report" className="btn btn-danger btn-lg rounded-pill px-5 shadow-sm">🚨 Report an Emergency</Link>
                     
-                    {/* ONLY SHOW LOGIN BUTTON IF USER IS NOT LOGGED IN */}
                     {!userInfo && (
                         <Link to="/login" className="btn btn-outline-dark btn-lg rounded-pill px-5 shadow-sm">Login to Dashboard</Link>
                     )}

@@ -1,16 +1,21 @@
 import axios from 'axios';
 
-// In production (Render), it uses VITE_API_URL. In local development, it defaults to localhost.
 const API = axios.create({
     baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
 });
 
-// Automatically attach the token to every request if the user is logged in
 API.interceptors.request.use((req) => {
-    const userInfo = localStorage.getItem('userInfo');
-    if (userInfo) {
-        const { token } = JSON.parse(userInfo);
-        req.headers.Authorization = `Bearer ${token}`;
+    // SAFE PARSE
+    const storedUser = localStorage.getItem('userInfo');
+    if (storedUser && storedUser !== "undefined") {
+        try {
+            const parsed = JSON.parse(storedUser);
+            if (parsed.token) {
+                req.headers.Authorization = `Bearer ${parsed.token}`;
+            }
+        } catch (e) {
+            console.error("Invalid token format in localStorage");
+        }
     }
     return req;
 });

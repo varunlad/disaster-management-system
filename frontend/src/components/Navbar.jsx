@@ -3,7 +3,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    
+    // SAFE PARSE: Check if it exists and isn't the string "undefined"
+    const storedUser = localStorage.getItem('userInfo');
+    const userInfo = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
 
     document.documentElement.setAttribute('data-bs-theme', 'light');
 

@@ -9,7 +9,7 @@ const HomeInfo = () => {
     return (
         <div className="container mt-2">
             <div className="text-center mb-5 bg-white p-5 rounded-4 shadow-sm border">
-                <h1 className="display-4 text-gradient-dark fw-bold mb-3">National Emergency Response & Tracking</h1>
+                <h1 className="display-4 text-gradient-dark fw-bold mb-3"> Emergency Response & Tracking</h1>
                 <p className="lead text-secondary mx-auto" style={{maxWidth: '800px'}}>
                     A centralized platform designed to crowdsource emergency reports, map natural disasters in real-time, and streamline administrative response across India.
                 </p>

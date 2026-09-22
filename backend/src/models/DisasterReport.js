@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const disasterSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    type: { type: String, enum: ['Flood', 'Earthquake', 'Cyclone', 'Landslide', 'Fire', 'Storm', 'Drought', 'Other'], required: true },
+    type: { type: String, enum: ['Flood', 'Earthquake', 'Landslide', 'Storm', 'Other'], required: true },
     severity: { type: String, enum: ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'], required: true },
     status: { type: String, enum: ['PENDING', 'APPROVED', 'REJECTED', 'ASSIGNED', 'RESOLVED'], default: 'PENDING' },
     latitude: { type: Number, required: true },

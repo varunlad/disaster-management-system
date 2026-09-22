@@ -81,7 +81,7 @@ const ReportDisaster = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="row g-3">
                         <div className="col-md-6"><label className="form-label fw-bold">Title <span className="info-icon" title="Clear headline">ℹ</span></label><input className="form-control bg-light" required onChange={e => setFormData({...formData, title: e.target.value})} placeholder="E.g. Road blocked by flood" /></div>
-                        <div className="col-md-3"><label className="form-label fw-bold">Type</label><select className="form-select bg-light" value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}><option>Flood</option><option>Earthquake</option><option>Cyclone</option><option>Fire</option><option>Landslide</option><option>Other</option></select></div>
+                        <div className="col-md-3"><label className="form-label fw-bold">Type</label><select className="form-select bg-light" value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}><option>Flood</option><option>Earthquake</option><option>Storm</option><option>Landslide</option><option>Other</option></select></div>
                         <div className="col-md-3"><label className="form-label fw-bold">Severity</label><select className="form-select bg-light" value={formData.severity} onChange={e => setFormData({...formData, severity: e.target.value})}><option value="LOW">Low</option><option value="MEDIUM">Medium</option><option value="HIGH">High</option><option value="CRITICAL">Critical</option></select></div>
                     </div>
                     

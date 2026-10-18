@@ -11,9 +11,9 @@ files = {
 "frontend/src/utils/api.js": r"""
 import axios from 'axios';
 
-// In production (Render), it uses VITE_API_URL. In local development, it defaults to localhost.
+// In production (Render), it uses API_URL. In local development, it defaults to localhost.
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+    baseURL: import.meta.env.API_URL || 'http://localhost:5000/api',
 });
 
 // Automatically attach the token to every request if the user is logged in

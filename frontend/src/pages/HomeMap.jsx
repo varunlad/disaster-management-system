@@ -43,7 +43,7 @@ const HomeMap = () => {
                                 <b>Severity:</b> <span className={`text-${d.severity === 'CRITICAL' ? 'danger' : 'warning'}`}>{d.severity}</span><br/> 
                                 <b>Source:</b> {d.source}<br/>
                                 {d.source === 'USER' && (
-                                    <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/disasters/${d._id}/image`} alt="Disaster" style={{ width: '100%', marginTop: '5px', borderRadius: '4px' }} onError={(e) => e.target.style.display = 'none'} />
+                                    <img src={`${import.meta.env.API_URL || 'http://localhost:5000/api'}/disasters/${d._id}/image`} alt="Disaster" style={{ width: '100%', marginTop: '5px', borderRadius: '4px' }} onError={(e) => e.target.style.display = 'none'} />
                                 )}
                             </Popup>
                         </Marker>

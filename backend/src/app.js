@@ -5,9 +5,24 @@ const disasterRoutes = require('./routes/disasterRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+
+// Hardened CORS configuration explicitly allowing your Render UI
+app.use(cors({
+    origin: [
+        'http://localhost:5173', 
+        'http://localhost:5174',
+        'https://disaster-management-system-ui.onrender.com'
+    ],
+    credentials: true // Ensures authentication tokens/cookies pass through successfully
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Root route for health checks
+app.get('/', (req, res) => {
+    res.status(200).send('Disaster Management API is running securely on Render.');
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/disasters', disasterRoutes);

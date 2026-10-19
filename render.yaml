@@ -20,7 +20,7 @@ services:
     buildCommand: "npm run build"
     publishPath: "dist"
     envVars:
-      - key: API_URL
+      - key: VITE_API_URL
         value: "https://dms-backend.onrender.com/api"
     routes:
       - type: rewrite

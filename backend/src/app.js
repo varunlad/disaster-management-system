@@ -11,7 +11,8 @@ app.use(cors({
     origin: [
         'http://localhost:5173', 
         'http://localhost:5174',
-        'https://disaster-management-system-ui.onrender.com'
+        'https://disaster-management-system-ui.onrender.com',
+        'https://disaster-management-system-asjn5ztej-varun-lads-projects.vercel.app'
     ],
     credentials: true // Ensures authentication tokens/cookies pass through successfully
 }));
